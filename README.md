@@ -1,24 +1,31 @@
-# README
+# Zack Dragoon
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A tibia monster exp web calculator in rails and react
 
-Things you may want to cover:
+Website link coming soon.
 
-* Ruby version
+## Development Requirements
+* Ruby 2.3.3
+* postgres
 
-* System dependencies
+## Configuration
+* clone this repo
+* `bundle`
+* setup the database with `rake db:setup`
 
-* Configuration
+## Populating Creature table
+Make sure you have an internet connection and run:
+`rake tibiawiki:populate_db`
 
-* Database creation
+This will scrape tibiawiki's monster data and load them into the db.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Contributing
+If you'd like to help me keep it sassy:
+ 
+* Create an issue with your problem (check if none already exist)
+* If you wish to implement the feature:
+    * Fork the project
+    * Create a feature branch with an explanatory name
+    * Reference the issue
+    * Send me a pull request! :)
+    
