@@ -4,8 +4,8 @@ require_relative 'creature_row'
 module Scraper
   module TibiaWiki
     class TibiaWikiScraper
-      BASE_URL = 'http://tibia.wikia.com/'
-      TARGET_PATH = 'wiki/List_of_Creatures'
+      BASE_URL = 'http://tibia.wikia.com/'.freeze
+      TARGET_PATH = 'wiki/List_of_Creatures'.freeze
 
       def initialize(scraper = Mechanize.new)
         @page = scraper.get(BASE_URL + TARGET_PATH)
@@ -38,13 +38,10 @@ module Scraper
       end
 
       def is_header?(row)
-        begin
-          row.children[1].name == 'th'
-        rescue
-          false
-        end
+        row.children[1].name == 'th'
+      rescue
+        false
       end
     end
-
   end
 end

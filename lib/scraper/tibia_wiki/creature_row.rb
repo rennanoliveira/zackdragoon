@@ -1,7 +1,6 @@
 module Scraper
   module TibiaWiki
     class CreatureRow
-
       def initialize(row)
         @row = row
       end
@@ -27,9 +26,8 @@ module Scraper
       attr_reader :row
 
       def parse_exp(string)
-        string.gsub('/n', '').gsub('?', '0').gsub('~', '')
+        string.gsub('/n', '').tr('?', '0').delete('~')
       end
-
     end
   end
 end

@@ -10,15 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326221152) do
-
-  create_table "creatures", force: :cascade do |t|
-    t.string   "name"
-    t.string   "image_url"
-    t.string   "wiki_url"
-    t.integer  "exp"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+ActiveRecord::Schema.define(version: 20_170_326_221_152) do
+  create_table 'creatures', force: :cascade do |t|
+    t.string   'name'
+    t.string   'image_url'
+    t.string   'wiki_url'
+    t.integer  'exp'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
-
 end
