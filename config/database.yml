@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: zackdragoon_development
+  pool: 5
+  username: root
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: zackdragoon_test
+  pool: 5
+  username: root
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: sample_postgres_production
+  pool: 5
+  username: sample_postgres
+  password:
