@@ -1,5 +1,9 @@
 module Scraper
   module TibiaWiki
+    # Reads a tibiawiki creature table row, withdrawing attributes from it.
+    # Input:
+    # CreatureRow.new(row).name
+    # => 'Ferumbras'
     class CreatureRow
       def initialize(row)
         @row = row
