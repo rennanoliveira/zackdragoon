@@ -5,32 +5,38 @@ module Scraper
     # CreatureRow.new(row).name
     # => 'Ferumbras'
     class CreatureRow
+      attr_reader :name, :image_url, :wiki_path, :exp
+
       def initialize(row)
-        @row = row
+        load_name(row)
+        load_image_url(row)
+        load_wiki_path(row)
+        load_exp(row)
       end
 
-      def name
-        row.children[1].children.first.attributes['title'].value
+      def load_name(row)
+        @name = row.children[1].children.first.attributes['title'].value
       end
 
-      def image_url
-        row.children[2].children[1].attributes['href'].value
+      def load_image_url(row)
+        @image_url = row.children[2].children[1].attributes['href'].value
       end
 
-      def wiki_path
-        BASE_URL + row.children[1].children.first.attributes['href'].value
+      def load_wiki_path(row)
+        @wiki_path = [
+          BASE_URL,
+          row.children[1].children.first.attributes['href'].value
+        ].join
       end
 
-      def exp
-        parse_exp(row.children[3].children.first.text)
+      def load_exp(row)
+        @exp = parse_exp(row.children[3].children.first.text)
       end
 
       private
 
-      attr_reader :row
-
       def parse_exp(string)
-        string.gsub('/n', '').tr('?', '0').delete('~')
+        string.gsub('\n', '').tr('?', '0').tr(' ', '').delete('~').to_i
       end
     end
   end

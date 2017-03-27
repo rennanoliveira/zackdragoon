@@ -8,6 +8,7 @@ end
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
+gem 'mechanize'
 gem 'pg'
 gem 'puma', '~> 3.0'
 gem 'rails', '~> 5.0.2'
