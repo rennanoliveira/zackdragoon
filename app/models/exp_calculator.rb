@@ -7,6 +7,8 @@ class ExpCalculator
       '4' => 1.8
   }
 
+
+
   def initialize(base_exp, diff_vocations, party_size)
     @base_exp = base_exp
     @diff_vocations = diff_vocations
@@ -14,7 +16,7 @@ class ExpCalculator
   end
 
   def party_exp
-    @party_exp ||= (base_exp * shared_bonus)/party_size
+    @party_exp ||= calculate_exp
   end
 
   def full_stamina_exp
@@ -29,8 +31,13 @@ class ExpCalculator
 
   attr_reader :base_exp, :diff_vocations, :party_size
 
-  def shared_bonus
-    BONUS_PERCENT[party_size.to_s]
+  def party_bonus
+    BONUS_PERCENT[diff_vocations.to_s]
+  end
+
+  def calculate_exp
+    return 0 if diff_vocations > party_size
+    ((base_exp * party_bonus)/party_size).floor
   end
 
 end
