@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
   root to: 'party_calculator#index'
-  post 'calculate', to: :create, controller: 'party_calculator'
+
+  get 'calculate', to: 'party_calculator#index'
+  post 'calculate', to: 'party_calculator#index'
 end

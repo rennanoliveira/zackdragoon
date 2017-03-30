@@ -2,12 +2,10 @@ class ExpCalculator
 
   BONUS_PERCENT = {
       '1' => 1,
-      '2' => 1.1,
-      '3' => 1.4,
-      '4' => 1.8
+      '2' => 1.3,
+      '3' => 1.5,
+      '4' => 2.0
   }
-
-
 
   def initialize(base_exp, diff_vocations, party_size)
     @base_exp = base_exp
@@ -27,17 +25,21 @@ class ExpCalculator
     party_exp * 0.5
   end
 
-  private
-
-  attr_reader :base_exp, :diff_vocations, :party_size
-
   def party_bonus
     BONUS_PERCENT[diff_vocations.to_s]
   end
 
+  def exp_with_bonus
+    base_exp * party_bonus
+  end
+
+  private
+
+  attr_reader :base_exp, :diff_vocations, :party_size
+
   def calculate_exp
     return 0 if diff_vocations > party_size
-    ((base_exp * party_bonus)/party_size).floor
+    (exp_with_bonus/party_size).floor.to_i
   end
 
 end

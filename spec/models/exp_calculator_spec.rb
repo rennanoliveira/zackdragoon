@@ -20,13 +20,13 @@ RSpec.describe ExpCalculator, type: :model do
         result = ExpCalculator.new(exp, diff_vocations, 1).party_exp
         expect(result).to eql 0
       end
-      it 'returns full exp * 1.1/2 if party-of-two' do
+      it 'returns full exp * 1.3/2 if party-of-two' do
         result = ExpCalculator.new(exp, diff_vocations, 2).party_exp
-        expect(result).to eql 550
+        expect(result).to eql 650
       end
-      it 'returns full exp * 1.1/x if x members' do
+      it 'returns full exp * 1.3/x if x members' do
         result = ExpCalculator.new(exp, diff_vocations, 4).party_exp
-        expect(result).to eql 275
+        expect(result).to eql 325
       end
     end
     context 'with three different vocation' do
@@ -39,13 +39,13 @@ RSpec.describe ExpCalculator, type: :model do
         result = ExpCalculator.new(exp, diff_vocations, 2).party_exp
         expect(result).to eql 0
       end
-      it 'returns full exp * 1.4/3 if party-of-three' do
+      it 'returns full exp * 1.5/3 if party-of-three' do
         result = ExpCalculator.new(exp, diff_vocations, 3).party_exp
-        expect(result).to eql 466
+        expect(result).to eql 500
       end
-      it 'returns full exp * 1.4/x if x members' do
+      it 'returns full exp * 1.5/x if x members' do
         result = ExpCalculator.new(exp, diff_vocations, 4).party_exp
-        expect(result).to eql 350
+        expect(result).to eql 375
       end
     end
     context 'with four different vocation' do
@@ -62,13 +62,13 @@ RSpec.describe ExpCalculator, type: :model do
         result = ExpCalculator.new(exp, diff_vocations, 3).party_exp
         expect(result).to eql 0
       end
-      it 'returns full exp * 1.8/4 if party-of-four' do
+      it 'returns full exp * 2/4 if party-of-four' do
         result = ExpCalculator.new(exp, diff_vocations, 4).party_exp
-        expect(result).to eql 450
+        expect(result).to eql 500
       end
-      it 'returns full exp * 1.8/x if x members' do
+      it 'returns full exp * 2/x if x members' do
         result = ExpCalculator.new(exp, diff_vocations, 6).party_exp
-        expect(result).to eql 300
+        expect(result).to eql 333
       end
     end
   end

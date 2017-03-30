@@ -1,5 +1,5 @@
 <% content_for :subtitle do %>
-    <h2>Tibia xp calculator</h2>
+    <h2>Tibia <span class="emphasis">party xp</span> calculator</h2>
 <% end %>
 
 <section class="main-form">
@@ -8,25 +8,26 @@
       <div class="form-group">
         <div class="input-group">
           <div class="styled-select slate">
-            <%= select_tag :creature,
+            <%= select_tag :creature_id,
                            options_from_collection_for_select(
                                Creature.all,
                                :id,
-                               :name
-                           ), include_blank: 'Pick a monster' %>
+                               :name,
+                               params[:creature_id]),
+                           include_blank: 'Pick a monster' %>
           </div>
         </div>
       </div>
 
       <div class="form-group">
         <div class="input-group">
-          <input id="party_size" placeholder="members" type="text">
+          <%= text_field_tag :party_size, params[:party_size], placeholder: 'members' %>
         </div>
         <div class="form-helper">How many members in your party? Ex: 2</div>
       </div>
       <div class="form-group">
         <div class="input-group">
-          <input id="diff_vocations" placeholder="vocations" type="text">
+          <%= text_field_tag :diff_vocations, params[:diff_vocations], placeholder: 'vocations' %>
         </div>
         <div class="form-helper">How many different vocations in your party? Ex: 2</div>
       </div>
@@ -35,3 +36,17 @@
       </div>
   <% end %>
 </section>
+
+<% if @calculator %>
+    <section class="creature main-form">
+      <%= image_tag @creature.image_url, alt: 'Creature Image' %>
+      <h3><%= @creature.name %></h3>
+      <p>Party of <%= params[:party_size] %>, with <%= params[:diff_vocations] %> different vocations.</p>
+      <p>Creature wields: <span class="emphasis"><%= @creature.exp %> xp</span>.</p>
+      <p>Party bonus: <span class="emphasis"><%= @calculator.party_bonus %>x</span>.</p>
+      <p>Total xp after bonus: <span class="emphasis"><%= @calculator.exp_with_bonus %> xp</span>.</p>
+      <p>Full stamina (1.5x exp): <span class="emphasis"><%= @calculator.full_stamina_exp %> xp</span>.</p>
+      <p>Normal stamina (normal exp): <span class="emphasis"><%= @calculator.party_exp %> xp</span>.</p>
+      <p>Low stamina (half exp): <span class="emphasis"><%= @calculator.empty_stamina_exp %> xp</span>.</p>
+    </section>
+<% end %>
