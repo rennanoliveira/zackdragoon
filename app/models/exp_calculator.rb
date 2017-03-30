@@ -1,11 +1,14 @@
 class ExpCalculator
 
   BONUS_PERCENT = {
-      '1' => 1,
+      '1' => 1.2,
       '2' => 1.3,
       '3' => 1.6,
       '4' => 2.0
   }
+
+  FULL_STAMINA = 1.5
+  EMPTY_STAMINA = 0.5
 
   def initialize(base_exp, diff_vocations, party_size)
     @base_exp = base_exp
@@ -18,14 +21,15 @@ class ExpCalculator
   end
 
   def full_stamina_exp
-    party_exp * 1.5
+    party_exp * FULL_STAMINA
   end
 
   def empty_stamina_exp
-    party_exp * 0.5
+    party_exp * EMPTY_STAMINA
   end
 
   def party_bonus
+    return 1 if party_size == 1
     BONUS_PERCENT[diff_vocations.to_s]
   end
 

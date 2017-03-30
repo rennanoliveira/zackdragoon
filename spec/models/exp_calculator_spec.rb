@@ -11,7 +11,7 @@ RSpec.describe ExpCalculator, type: :model do
       end
       it 'returns full exp/party size if more than one member' do
         result = ExpCalculator.new(exp, diff_vocations, 4).party_exp
-        expect(result).to eql 250
+        expect(result).to eql 300
       end
     end
     context 'with two different vocation' do
