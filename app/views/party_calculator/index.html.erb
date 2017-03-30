@@ -45,8 +45,8 @@
       <p>Creature wields: <span class="emphasis"><%= @creature.exp %> xp</span>.</p>
       <p>Party bonus: <span class="emphasis"><%= @calculator.party_bonus %>x</span>.</p>
       <p>Total xp after bonus: <span class="emphasis"><%= @calculator.exp_with_bonus %> xp</span>.</p>
-      <p>Full stamina (1.5x exp): <span class="emphasis"><%= @calculator.full_stamina_exp %> xp</span>.</p>
-      <p>Normal stamina (normal exp): <span class="emphasis"><%= @calculator.party_exp %> xp</span>.</p>
-      <p>Low stamina (half exp): <span class="emphasis"><%= @calculator.empty_stamina_exp %> xp</span>.</p>
+      <p>Full stamina (1.5x exp): <span class="emphasis"><%= @calculator.full_stamina_exp %> xp per player</span>.</p>
+      <p>Normal stamina (normal exp): <span class="emphasis"><%= @calculator.party_exp %> xp per player</span>.</p>
+      <p>Low stamina (half exp): <span class="emphasis"><%= @calculator.empty_stamina_exp %> xp per player</span>.</p>
     </section>
 <% end %>
