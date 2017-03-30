@@ -39,13 +39,13 @@ RSpec.describe ExpCalculator, type: :model do
         result = ExpCalculator.new(exp, diff_vocations, 2).party_exp
         expect(result).to eql 0
       end
-      it 'returns full exp * 1.5/3 if party-of-three' do
+      it 'returns full exp * 1.6/3 if party-of-three' do
         result = ExpCalculator.new(exp, diff_vocations, 3).party_exp
-        expect(result).to eql 500
+        expect(result).to eql 533
       end
-      it 'returns full exp * 1.5/x if x members' do
+      it 'returns full exp * 1.6/x if x members' do
         result = ExpCalculator.new(exp, diff_vocations, 4).party_exp
-        expect(result).to eql 375
+        expect(result).to eql 400
       end
     end
     context 'with four different vocation' do
